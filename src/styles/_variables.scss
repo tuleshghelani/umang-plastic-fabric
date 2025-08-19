@@ -1,0 +1,43 @@
+// Brand Colors
+$primary: #2aa9e0;      // Main brand blue
+$primary-light: #55bbea; // Lighter blue (20% lighter)
+$primary-lighter: #80cdf0; // Even lighter blue (40% lighter)
+$primary-lightest: #aadff6; // Lightest blue (60% lighter)
+$primary-dark: #1e87b3;  // Darker blue (20% darker)
+
+$secondary: #8bc543;     // Green
+$secondary-light: #a2d169; // Lighter green (20% lighter)
+$secondary-lighter: #b9dd8f; // Even lighter green (40% lighter)
+$secondary-lightest: #d0e9b5; // Lightest green (60% lighter)
+$secondary-dark: #6f9e36; // Darker green (20% darker)
+
+// Neutral Colors
+$dark: #1f1f1f;
+$gray-900: #212121;
+$gray-800: #424242;
+$gray-700: #616161;
+$gray-600: #757575;
+$gray-500: #9e9e9e;
+$gray-400: #bdbdbd;
+$gray-300: #e0e0e0;
+$gray-200: #eeeeee;
+$gray-100: #f5f5f5;
+$light: #ffffff;
+
+// Functional Colors
+$success: #27ae60;
+$info: $primary;
+$warning: #fbbc04;
+$error: #ea4335;
+
+// UI Colors
+$text-primary: $gray-900;
+$text-secondary: $gray-700;
+$text-light: $light;
+$border-color: $gray-300;
+$background-primary: $light;
+$background-secondary: $gray-100;
+$shadow-color: rgba($dark, 0.1); 
+$weight-bold: 700;
+$weight-semibold: 600;
+$weight-medium: 500;
