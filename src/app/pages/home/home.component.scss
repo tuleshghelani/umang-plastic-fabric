@@ -1776,6 +1776,7 @@
         background: linear-gradient(135deg, $primary, $primary-dark);
         color: $text-white;
         box-shadow: 0 6px 15px rgba($primary, 0.3);
+        width: 90%;
         
         &:hover {
           transform: translateY(-3px);
@@ -1787,6 +1788,7 @@
         background: transparent;
         color: $primary;
         border: 2px solid $primary;
+        width: 90%;
         
         &:hover {
           background: rgba($primary, 0.1);
@@ -2799,7 +2801,8 @@
     .contact-buttons {
       .btn {
         padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
+        font-size: 0.95rem;        
+        width: 85%;
       }
     }
   }
