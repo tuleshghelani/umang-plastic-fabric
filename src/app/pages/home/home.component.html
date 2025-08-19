@@ -6,7 +6,7 @@
           <!-- Slide 1 -->
           <div class="slide" [class.active]="currentSlide === 0">
             <div class="slide-overlay"></div>
-            <img src="assets/home/slider-1.png" alt="Premium Green Nets and Shade Nets" loading="lazy">
+            <img src="assets/home/slider-1.jpg" alt="Premium Green Nets and Shade Nets" loading="lazy">
             <div class="slide-content">
               <div class="content-wrapper">
                 <span class="subtitle" data-aos="fade-up" data-aos-delay="100">Premium Agricultural Protection Solutions</span>
@@ -57,7 +57,7 @@
           <!-- Slide 4 -->
           <div class="slide" [class.active]="currentSlide === 3">
             <div class="slide-overlay"></div>
-            <img src="assets/home/slider-1.png" alt="Custom Agricultural Net Solutions" loading="lazy">
+            <img src="assets/home/slider-1.jpg" alt="Custom Agricultural Net Solutions" loading="lazy">
             <div class="slide-content">
               <div class="content-wrapper">
                 <span class="subtitle" data-aos="fade-up" data-aos-delay="100">Tailored Excellence</span>
@@ -108,7 +108,7 @@
           <!-- Slide 7 -->
           <div class="slide" [class.active]="currentSlide === 6">
             <div class="slide-overlay"></div>
-            <img src="assets/home/slider-1.png" alt="Pest Management Solutions" loading="lazy">
+            <img src="assets/home/slider-1.jpg" alt="Pest Management Solutions" loading="lazy">
             <div class="slide-content">
               <div class="content-wrapper">
                 <span class="subtitle" data-aos="fade-up" data-aos-delay="100">Pest Management</span>
@@ -135,13 +135,13 @@
 
         <!-- Slide Indicators -->
         <div class="slide-indicators">
-          <span class="indicator" [class.active]="currentSlide === 0" (click)="setSlide(0)"></span>
-          <span class="indicator" [class.active]="currentSlide === 1" (click)="setSlide(1)"></span>
-          <span class="indicator" [class.active]="currentSlide === 2" (click)="setSlide(2)"></span>
-          <span class="indicator" [class.active]="currentSlide === 3" (click)="setSlide(3)"></span>
-          <span class="indicator" [class.active]="currentSlide === 4" (click)="setSlide(4)"></span>
-          <span class="indicator" [class.active]="currentSlide === 5" (click)="setSlide(5)"></span>
-          <span class="indicator" [class.active]="currentSlide === 6" (click)="setSlide(6)"></span>
+          <span class="indicator" [class.active]="currentSlide === 0" (click)="goToSlide(0)"></span>
+          <span class="indicator" [class.active]="currentSlide === 1" (click)="goToSlide(1)"></span>
+          <span class="indicator" [class.active]="currentSlide === 2" (click)="goToSlide(2)"></span>
+          <span class="indicator" [class.active]="currentSlide === 3" (click)="goToSlide(3)"></span>
+          <span class="indicator" [class.active]="currentSlide === 4" (click)="goToSlide(4)"></span>
+          <span class="indicator" [class.active]="currentSlide === 5" (click)="goToSlide(5)"></span>
+          <span class="indicator" [class.active]="currentSlide === 6" (click)="goToSlide(6)"></span>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
     <div class="container">
       <div class="about-wrapper">
         <div class="about-image" data-aos="fade-right">
-          <img src="assets/home/automobile.jpg" alt="Umang Plastic Fabric Manufacturing" loading="lazy">
+          <img src="assets/home/about.jpg" alt="Umang Plastic Fabric Manufacturing" loading="lazy">
           <div class="experience-badge">
             <span class="years">{{experienceText}}</span>
             <span class="text">Years of Excellence</span>
@@ -458,7 +458,7 @@
         </div>
         
         <div class="manufacturing-image" data-aos="fade-left">
-          <img src="assets/home/automobile.jpg" alt="Umang Plastic Fabric Manufacturing Process" loading="lazy">
+          <img src="assets/home/about.jpg" alt="Umang Plastic Fabric Manufacturing Process" loading="lazy">
         </div>
       </div>
     </div>
@@ -468,7 +468,8 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-subtitle">Agricultural Client Feedback</span>
-        <h2 class="section-title">What Our Farmers Say</h2>
+        <h2 class="section-title">What Our Customers Say</h2>
+
       </div>
       
       <div class="testimonials-grid" data-aos="fade-up">
@@ -481,8 +482,8 @@
           </p>
           <div class="testimonial-author">
             <div class="author-info">
-              <h4>Rajesh Patel</h4>
-              <p>Organic Farmer, Gujarat</p>
+              <h4>Rajesh</h4>
+              <p>Gujarat</p>
             </div>
           </div>
         </div>
@@ -496,8 +497,8 @@
           </p>
           <div class="testimonial-author">
             <div class="author-info">
-              <h4>Priya Sharma</h4>
-              <p>Greenhouse Manager, Maharashtra</p>
+              <h4>Priya</h4>
+              <p>Maharashtra</p>
             </div>
           </div>
         </div>
@@ -511,8 +512,8 @@
           </p>
           <div class="testimonial-author">
             <div class="author-info">
-              <h4>Vikram Mehta</h4>
-              <p>Orchard Owner, Himachal Pradesh</p>
+              <h4>Vikram</h4>
+              <p>Himachal Pradesh</p>
             </div>
           </div>
         </div>

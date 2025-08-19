@@ -53,21 +53,21 @@ export class HomeComponent implements OnInit {
     {
       title: 'Green Shade Nets',
       description: 'High-quality shade nets for optimal sunlight filtration and plant protection in various agricultural applications.',
-      image: 'assets/home/automobile.jpg',
+      image: 'assets/home/about.jpg',
       link: '/products/green-shade-nets',
       aosDelay: 200
     },
     {
       title: 'Insect Protection Nets',
       description: 'Fine-mesh nets designed to keep pests away while allowing air circulation for healthier crops.',
-      image: 'assets/home/automobile.jpg',
+      image: 'assets/home/about.jpg',
       link: '/products/insect-protection-nets',
       aosDelay: 200
     },
     {
       title: 'UV Stabilized Nets',
       description: 'Long-lasting nets with enhanced UV resistance for extended outdoor use in harsh sunlight conditions.',
-      image: 'assets/home/automobile.jpg',
+      image: 'assets/home/about.jpg',
       link: '/products/uv-stabilized-nets',
       aosDelay: 200
     },

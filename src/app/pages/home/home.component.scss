@@ -347,6 +347,10 @@
               }
             }
 
+            h1 {              
+              color: $text-white;
+            }
+
             p {
               font-size: 1.25rem;
               line-height: 1.6;
@@ -539,6 +543,7 @@
             .content-wrapper {
               h2 {
                 font-size: 2.5rem;
+                color: $text-white;
               }
 
               p {
@@ -2599,7 +2604,7 @@
 
 .contact-cta-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, $primary-dark, $primary);
+  background: linear-gradient(135deg, $primary-lightest, $primary-lighter);
   position: relative;
   overflow: hidden;
   width: 100%;

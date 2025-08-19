@@ -54,6 +54,7 @@
   z-index: 1000;
   font-family: $font-primary;
   width: 100%;
+  background: linear-gradient(to right, rgba($primary-lightest, 0.9), rgba($primary-lighter, 0.9));
   
   // Global container
   .container {
@@ -69,12 +70,13 @@
   
   // Top Bar - contact info and social links
   .top-bar {
-    background: linear-gradient(90deg, $primary-dark, $primary);
+    background: linear-gradient(90deg, $primary-dark, $primary, $primary-light);
     color: $text-white;
     padding: 0.6rem 0;
     position: relative;
     overflow: hidden;
     @include smooth-transition;
+    box-shadow: 0 2px 10px rgba($primary-dark, 0.3);
     
     // Decorative elements
     &::before {
@@ -187,11 +189,12 @@
   
   // Main Navigation Header
   .main-header {
-    background: $background-primary;
-    box-shadow: 0 4px 20px rgba($neutral-dark, 0.08);
+    background: linear-gradient(to right, $background-primary, rgba($primary-lightest, 0.1));
+    box-shadow: 0 4px 20px rgba($primary-dark, 0.1);
     padding: 0.75rem 0;
     @include smooth-transition;
     position: relative;
+    border-bottom: 2px solid rgba($primary-lighter, 0.3);
     
     .container {
       @include flex(space-between, center);
@@ -285,7 +288,7 @@
             overflow: hidden;
             
             i {
-              color: $primary;
+              color: $secondary;
               font-size: 1rem;
               @include smooth-transition;
             }
@@ -297,23 +300,42 @@
               left: 0;
               width: 100%;
               height: 2px;
-              background: linear-gradient(90deg, $primary, $primary-light);
+              background: linear-gradient(90deg, $secondary, $secondary-light, $primary-light);
               transform: scaleX(0);
               transform-origin: right;
               @include smooth-transition(transform, 0.4s);
             }
             
-            &:hover, &.active {
+            &:hover {
               color: $primary;
-              background: rgba($primary, 0.05);
+              background: linear-gradient(to right, rgba($primary-lightest, 0.2), rgba($secondary-lightest, 0.2));
               
               i {
+                color: $primary-dark;
                 transform: translateY(-2px);
               }
               
               &::before {
                 transform: scaleX(1);
                 transform-origin: left;
+              }
+            }
+            
+            &.active {
+              color: $primary-dark;
+              background: linear-gradient(to right, rgba($primary-lighter, 0.15), rgba($secondary-lighter, 0.15));
+              font-weight: $weight-semibold;
+              box-shadow: 0 2px 8px rgba($primary-dark, 0.1);
+              
+              i {
+                color: $secondary-dark;
+                transform: translateY(-2px);
+              }
+              
+              &::before {
+                transform: scaleX(1);
+                transform-origin: left;
+                height: 3px;
               }
             }
           }
@@ -395,22 +417,26 @@
           height: 2px;
           margin: 5px 0;
           border-radius: 2px;
-          background: $text-primary;
+          background: $primary-dark;
           @include smooth-transition;
+        }
+        
+        &:hover .line {
+          background: $secondary-dark;
         }
         
         &.active {
           .line {
             &:nth-child(1) {
               transform: rotate(45deg) translate(5px, 5px);
-              background: $primary;
+              background: $secondary;
             }
             &:nth-child(2) {
               opacity: 0;
             }
             &:nth-child(3) {
               transform: rotate(-45deg) translate(5px, -5px);
-              background: $primary;
+              background: $secondary;
             }
           }
         }
@@ -425,13 +451,14 @@
     left: 0;
     width: 100%;
     height: calc(100vh - 70px);
-    background: $accent;
-    background: linear-gradient(135deg, $accent, darken($accent, 10%));
+    background: linear-gradient(135deg, rgba($primary-dark, 0.95), rgba($primary, 0.9));
     padding: 1.5rem;
     transform: translateX(-100%);
     @include smooth-transition(transform, 0.4s);
     overflow-y: auto;
     z-index: 999;
+    box-shadow: 5px 0 25px rgba($primary-dark, 0.2);
+    border-right: 3px solid rgba($secondary-light, 0.5);
     
     @include mobile {
       top: 60px;
@@ -466,9 +493,10 @@
             font-size: 1rem;
             font-weight: $weight-medium;
             border-radius: 8px;
-            background: rgba($background-primary, 0.08);
+            background: rgba($background-primary, 0.1);
             @include smooth-transition;
-            border-left: 3px solid transparent;
+            border-left: 3px solid rgba($secondary-light, 0.5);
+            box-shadow: 0 2px 8px rgba($primary-dark, 0.1);
             
             span {
               color: $text-white !important;
@@ -476,24 +504,42 @@
             }
             
             i {
-              color: rgba($text-white, 0.7);
+              color: $secondary-light;
               font-size: 1.2rem;
               width: 24px;
               text-align: center;
               @include smooth-transition;
             }
             
-            &:hover, &.active {
-              background: rgba($primary, 0.2);
-              border-left: 3px solid $primary-light;
+            &:hover {
+              background: rgba($background-primary, 0.15);
+              border-left-color: $secondary;
               transform: translateX(5px);
+              box-shadow: 0 4px 12px rgba($primary-dark, 0.2);
               
               span {
                 color: $text-white !important;
               }
               
               i {
-                color: $primary-light;
+                color: $secondary;
+                transform: scale(1.1);
+              }
+            }
+            
+            &.active {
+              background: rgba($background-primary, 0.2);
+              border-left-color: $secondary;
+              box-shadow: 0 4px 15px rgba($primary-dark, 0.25);
+              
+              span {
+                color: $text-white !important;
+                font-weight: $weight-semibold;
+              }
+              
+              i {
+                color: $secondary;
+                transform: scale(1.1);
               }
             }
           }
@@ -565,8 +611,10 @@
     }
     
     .main-header {
-      @include glass-effect;
-      box-shadow: 0 4px 20px rgba($neutral-dark, 0.1);
+      padding: 0.5rem 0;
+      background: linear-gradient(to right, rgba($primary-lightest, 0.95), rgba($background-primary, 0.95));
+      box-shadow: 0 4px 20px rgba($primary-dark, 0.15);
+      border-bottom: 2px solid rgba($secondary-light, 0.5);
       
       .container {
         height: 65px;
@@ -578,6 +626,7 @@
       
       .logo-image {
         max-height: 50px;
+        filter: drop-shadow(0 2px 4px rgba($primary-dark, 0.2));
         
         @include mobile {
           max-height: 45px;
@@ -585,7 +634,7 @@
       }
       
       .nav-link {
-        padding: 0.625rem 1rem;
+        padding: 0.6rem 0.9rem;
       }
     }
   }
@@ -598,9 +647,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba($accent, 0.6);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: linear-gradient(135deg, rgba($primary-dark, 0.7), rgba($primary, 0.5));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
   @include smooth-transition;
