@@ -4,9 +4,9 @@
 @import '../../../styles.scss';
 
 // Footer-specific variables - using global color theme
-$footer-bg: $primary-dark;
-$footer-text: $neutral-lighter;
-$footer-link: $text-white;
+$footer-bg: $background-primary; // White background
+$footer-text: $text-secondary; // Dark text for readability
+$footer-link: $text-primary; // Primary text color for links
 $footer-border: rgba($primary-light, 0.2);
 
 // Mixins
@@ -37,13 +37,14 @@ $large-desktop: 1200px;
 }
 
 .premium-footer {
-  background: linear-gradient(to bottom, $primary-dark, $primary);
+  background: $footer-bg;
   color: $footer-text;
   font-family: $font-primary;
   padding: 4rem 0 0;
   width: 100%;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 -5px 15px rgba($primary-dark, 0.1);
   
   // Decorative top pattern
   &::before {
@@ -52,12 +53,12 @@ $large-desktop: 1200px;
     top: 0;
     left: 0;
     width: 100%;
-    height: 6px;
+    height: 4px;
     background: linear-gradient(to right, 
-      $primary-dark, $primary, $primary-lighter, $secondary, $secondary-light, $secondary-lighter, $primary);
+      $primary, $primary-light, $secondary, $secondary-light, $primary);
     background-size: 200% 100%;
     animation: shimmer 4s infinite linear;
-    box-shadow: 0 1px 5px rgba($primary-dark, 0.3);
+    box-shadow: 0 1px 3px rgba($primary, 0.1);
   }
   
   @keyframes shimmer {
@@ -112,23 +113,23 @@ $large-desktop: 1200px;
         max-width: 140px;
         height: auto;
         object-fit: contain;
-        filter: drop-shadow(0 4px 10px rgba($primary-dark, 0.4)) drop-shadow(0 2px 5px rgba($secondary-dark, 0.3));
+        filter: drop-shadow(0 2px 5px rgba($primary, 0.2));
         transition: transform 0.3s ease, filter 0.3s ease;
         
         &:hover {
           transform: translateY(-3px);
-          filter: drop-shadow(0 6px 12px rgba($primary-dark, 0.5)) drop-shadow(0 3px 6px rgba($secondary-dark, 0.4));
+          filter: drop-shadow(0 4px 8px rgba($primary, 0.3));
         }
       }
     }
 
     .company-name {
-      color: $secondary;
+      color: $primary;
       font-size: 1.625rem;
       font-weight: $weight-bold;
       margin-bottom: 1.25rem;
       letter-spacing: $letter-spacing-tight;
-      text-shadow: 0 2px 4px rgba($primary-dark, 0.2);
+      text-shadow: 0 1px 1px rgba($primary-light, 0.2);
       position: relative;
       display: inline-block;
       
@@ -139,7 +140,7 @@ $large-desktop: 1200px;
         left: 0;
         width: 50%;
         height: 2px;
-        background: linear-gradient(to right, $secondary, $secondary-lighter);
+        background: linear-gradient(to right, $primary, $secondary);
         border-radius: 2px;
       }
     }
@@ -148,9 +149,9 @@ $large-desktop: 1200px;
       line-height: 1.7;
       margin-bottom: 1.75rem;
       font-size: 1rem;
-      color: $text-white;
+      color: $text-secondary;
       max-width: 90%;
-      text-shadow: 0 1px 1px rgba($primary-dark, 0.3);
+      text-shadow: none;
 
       @include mobile {
         margin: 0 auto 1.75rem;
@@ -164,11 +165,11 @@ $large-desktop: 1200px;
         max-width: 120px;
         height: auto;
         transition: all 0.3s ease;
-        filter: drop-shadow(0 3px 6px rgba($primary-dark, 0.3));
+        filter: drop-shadow(0 2px 4px rgba($primary, 0.2));
         
         &:hover {
           transform: scale(1.05) translateY(-3px);
-          filter: drop-shadow(0 5px 10px rgba($primary-dark, 0.4));
+          filter: drop-shadow(0 3px 6px rgba($primary, 0.3));
         }
       }
     }
@@ -188,15 +189,15 @@ $large-desktop: 1200px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba($primary-lighter, 0.2);
-        color: $secondary-light;
+        background: rgba($primary, 0.1);
+        color: $primary;
         border-radius: 50%;
         transition: all 0.3s ease;
         font-size: 1.1rem;
         position: relative;
         overflow: hidden;
-        border: 1px solid rgba($secondary-lighter, 0.3);
-        box-shadow: 0 3px 8px rgba($primary-dark, 0.2);
+        border: 1px solid rgba($primary-light, 0.3);
+        box-shadow: 0 2px 5px rgba($primary-dark, 0.1);
         
         &::before {
           content: '';
@@ -205,7 +206,7 @@ $large-desktop: 1200px;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, $primary-light, $secondary);
+          background: linear-gradient(135deg, $primary-light, $primary);
           opacity: 0;
           transition: opacity 0.3s ease;
           z-index: 1;
@@ -219,11 +220,11 @@ $large-desktop: 1200px;
 
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 0 8px 20px rgba($primary-dark, 0.4);
-          border-color: rgba($secondary, 0.5);
+          box-shadow: 0 5px 15px rgba($primary, 0.2);
+          border-color: $primary;
           
           &::before {
-            opacity: 1;
+            opacity: 0.9;
           }
           
           i {
@@ -240,14 +241,14 @@ $large-desktop: 1200px;
     margin-bottom: 2rem;
 
     .footer-title {
-      color: $secondary;
+      color: $primary;
       font-size: 1.35rem;
       font-weight: $weight-semibold;
       margin-bottom: 1.75rem;
       position: relative;
       padding-bottom: 0.75rem;
       letter-spacing: $letter-spacing-tight;
-      text-shadow: 0 2px 3px rgba($primary-dark, 0.2);
+      text-shadow: 0 1px 1px rgba($primary-light, 0.2);
 
       @include mobile {
         text-align: center;
@@ -265,9 +266,9 @@ $large-desktop: 1200px;
         left: 0;
         width: 70px;
         height: 3px;
-        background: linear-gradient(to right, $primary-light, $secondary, $secondary-lighter);
+        background: linear-gradient(to right, $primary, $primary-light, $secondary);
         border-radius: 10px;
-        box-shadow: 0 1px 3px rgba($primary-dark, 0.2);
+        box-shadow: 0 1px 2px rgba($primary, 0.1);
       }
     }
   }
@@ -286,7 +287,7 @@ $large-desktop: 1200px;
       margin-bottom: 0.875rem;
 
       a {
-        color: $footer-link;
+        color: $text-primary;
         text-decoration: none;
         display: inline-block;
         position: relative;
@@ -294,7 +295,7 @@ $large-desktop: 1200px;
         font-size: 1rem;
         font-weight: $weight-medium;
         transition: all 0.3s ease;
-        text-shadow: 0 1px 1px rgba($primary-dark, 0.2);
+        text-shadow: none;
 
         @include mobile {
           padding-left: 0;
@@ -309,13 +310,13 @@ $large-desktop: 1200px;
           position: absolute;
           left: 0;
           transition: transform 0.3s ease;
-          color: $secondary-light;
+          color: $primary;
         }
 
         &:hover {
-          color: $secondary-lighter;
+          color: $secondary;
           transform: translateX(5px);
-          text-shadow: 0 1px 2px rgba($primary-dark, 0.3);
+          text-shadow: none;
 
           &::before {
             transform: translateX(3px);
@@ -348,28 +349,28 @@ $large-desktop: 1200px;
       }
 
       i {
-        color: $secondary-light;
+        color: $primary;
         font-size: 1.25rem;
         margin-top: 0.25rem;
         width: 20px;
         text-align: center;
-        text-shadow: 0 1px 2px rgba($primary-dark, 0.3);
+        text-shadow: none;
       }
 
       div {
         flex: 1;
         
         strong {
-          color: $text-white;
+          color: $text-secondary;
           display: block;
           margin-bottom: 0.25rem;
           font-size: 1rem;
           letter-spacing: 0.01em;
-          text-shadow: 0 1px 1px rgba($primary-dark, 0.3);
+          text-shadow: none;
         }
 
         a {
-          color: $primary-lighter;
+          color: $primary;
           text-decoration: none;
           transition: all 0.3s ease;
           font-size: 1rem;
@@ -384,12 +385,12 @@ $large-desktop: 1200px;
             left: 0;
             width: 0;
             height: 1px;
-            background: $secondary-lighter;
+            background: $secondary;
             transition: width 0.3s ease;
           }
 
           &:hover {
-            color: $secondary-lighter;
+            color: $secondary;
             transform: translateY(-2px);
             
             &::after {
@@ -405,10 +406,10 @@ $large-desktop: 1200px;
   .footer-bottom {
     margin-top: 3rem;
     padding: 1.75rem 0;
-    border-top: 1px solid rgba($secondary-light, 0.2);
+    border-top: 1px solid rgba($primary, 0.2);
     text-align: center;
-    background: linear-gradient(to right, rgba($primary-dark, 0.8), rgba($primary, 0.8));
-    box-shadow: inset 0 5px 10px -5px rgba($primary-dark, 0.3);
+    background: $footer-bg;
+    box-shadow: 0 -1px 3px rgba($primary, 0.05);
 
     .container {
       display: flex;
@@ -424,17 +425,17 @@ $large-desktop: 1200px;
     .copyright {
       margin: 0;
       font-size: 0.95rem;
-      color: $text-white;
-      text-shadow: 0 1px 1px rgba($primary-dark, 0.3);
+      color: $text-secondary;
+      text-shadow: none;
     }
 
     .credits {
       margin: 0;
-      color: $secondary-lighter;
+      color: $primary;
       font-weight: $weight-semibold;
       font-size: 0.95rem;
       letter-spacing: 0.01em;
-      text-shadow: 0 1px 1px rgba($primary-dark, 0.3);
+      text-shadow: none;
     }
   }
 }
@@ -466,7 +467,7 @@ $large-desktop: 1200px;
 @media (max-width: 768px) {
   .premium-footer {
     padding-top: 3rem;
-    background: linear-gradient(to bottom, $primary-dark, $primary);
+    background: $footer-bg;
 
     .footer-top .container {
       padding: 0 1.25rem;
@@ -478,12 +479,12 @@ $large-desktop: 1200px;
 
     .make-in-india-logo {
       max-width: 100px;
-      filter: drop-shadow(0 2px 4px rgba($primary-dark, 0.3));
+      filter: drop-shadow(0 1px 2px rgba($primary, 0.2));
     }
     
     .footer-bottom {
       padding: 1.5rem 0;
-      background: linear-gradient(to right, rgba($primary-dark, 0.9), rgba($primary, 0.9));
+      background: $footer-bg;
       
       .copyright, .credits {
         font-size: 0.875rem;
