@@ -1,0 +1,216 @@
+<!-- About Us Page - Umang Plastic Fabric -->
+<main class="about-us-page" itemscope itemtype="http://schema.org/Organization">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title" itemprop="name">About Umang Plastic Fabric</h1>
+        <p class="hero-subtitle">Leading the Future of Sustainable Green Net Manufacturing</p>
+        <div class="hero-description">
+          <p itemprop="description">For over 5 years, Umang Plastic Fabric has been at the forefront of innovative green net solutions, 
+          serving industries worldwide with premium quality ROSE brand shade nets and sustainable manufacturing practices.</p>
+        </div>
+        <div class="brand-highlight">
+          <span class="brand-icon" aria-label="ROSE Brand Icon">🌹</span>
+          <span class="brand-text">ROSE Brand - Excellence in Every Net</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-background" aria-hidden="true"></div>
+  </section>
+
+  <!-- Company Stats Section -->
+  <section class="stats-section" aria-labelledby="company-stats-title">
+    <div class="container">
+      <h2 id="company-stats-title" class="visually-hidden">Company Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-item" *ngFor="let stat of companyStats">
+          <div class="stat-icon" aria-hidden="true">{{ stat.icon }}</div>
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Story Section -->
+  <section class="story-section" aria-labelledby="company-story-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="company-story-title" class="section-title">Our Story</h2>
+        <p class="section-subtitle">From humble beginnings to green net industry leadership</p>
+      </div>
+      
+      <div class="story-content">
+        <div class="story-text">
+          <h3>Building Excellence Since 2021</h3>
+          <p>Founded with a vision to revolutionize the green net manufacturing industry, Umang Plastic Fabric began 
+          as a small family-owned business in Gujarat, India. Our founder, Mr. Harshil Sagapariya, started with a simple 
+          mission: to create high-quality green nets and shade nets that would serve agricultural and commercial needs while maintaining environmental responsibility.</p>
+          
+          <p>Over the years, we've grown from a local manufacturer to a trusted partner for businesses across 
+          multiple sectors. Our commitment to innovation, quality, and sustainability has remained unwavering, 
+          driving us to continuously improve our processes and expand our product portfolio.</p>
+          
+          <p>Today, we're proud to be recognized as one of Gujarat's leading green net manufacturers, serving 
+          diverse industries including agriculture, construction, residential, and commercial sectors with our premium ROSE brand products.</p>
+        </div>
+        
+        <div class="story-image">
+          <img src="assets/logo/logo.png" alt="Umang Plastic Fabric - Green Net Manufacturing Facility" class="company-logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROSE Brand Section -->
+  <section class="brand-section" aria-labelledby="rose-brand-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="rose-brand-title" class="section-title">ROSE Brand Excellence</h2>
+        <p class="section-subtitle">Our flagship brand representing the highest quality standards</p>
+      </div>
+      
+      <div class="brand-content">
+        <div class="brand-intro">
+          <div class="brand-logo">
+            <h3>ROSE</h3>
+          </div>
+          <p>The ROSE brand symbolizes our commitment to excellence, beauty, and durability in green net manufacturing. 
+          Every ROSE product is crafted with precision, using the finest materials and advanced technology to ensure 
+          superior performance and long-lasting quality.</p>
+        </div>
+        
+        <div class="brand-features-grid">
+          <div class="brand-feature" *ngFor="let feature of brandFeatures">
+            <div class="feature-icon" aria-hidden="true">{{ feature.icon }}</div>
+            <h4 class="feature-title">{{ feature.title }}</h4>
+            <p class="feature-description">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Products Section -->
+  <section class="products-section" aria-labelledby="main-products-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="main-products-title" class="section-title">Our Main Products</h2>
+        <p class="section-subtitle">Comprehensive range of ROSE brand green nets and shade nets</p>
+      </div>
+      
+      <div class="products-grid">
+        <article class="product-card" *ngFor="let product of mainProducts">
+          <div class="product-icon" aria-hidden="true">{{ product.icon }}</div>
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <div class="rose-brand-badge">
+            <span class="rose-icon-small" aria-hidden="true">🌹</span>
+            <span>ROSE Brand</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="values-section" aria-labelledby="core-values-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="core-values-title" class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">The principles that guide everything we do</p>
+      </div>
+      
+      <div class="values-grid">
+        <article class="value-card" *ngFor="let value of coreValues">
+          <div class="value-icon" aria-hidden="true">{{ value.icon }}</div>
+          <h3 class="value-title">{{ value.title }}</h3>
+          <p class="value-description">{{ value.description }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="mission-vision-section" aria-labelledby="mission-vision-title">
+    <div class="container">
+      <h2 id="mission-vision-title" class="visually-hidden">Mission and Vision</h2>
+      <div class="mission-vision-grid">
+        <article class="mission-card">
+          <h3>Our Mission</h3>
+          <p>To provide innovative, sustainable green net solutions that empower agriculture and industries to grow while preserving 
+          our environment for future generations. We strive to be the most trusted partner in green net manufacturing, 
+          delivering ROSE brand excellence in every product and service.</p>
+        </article>
+        
+        <article class="vision-card">
+          <h3>Our Vision</h3>
+          <p>To lead the global transition towards sustainable green net manufacturing, becoming the benchmark for 
+          quality, innovation, and environmental responsibility in the industry. We envision a future where our 
+          ROSE brand products contribute to a circular economy and greener world.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Milestones Section -->
+  <section class="milestones-section" aria-labelledby="company-journey-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="company-journey-title" class="section-title">Our Journey</h2>
+        <p class="section-subtitle">Key milestones in our green net growth story</p>
+      </div>
+      
+      <div class="timeline">
+        <article class="timeline-item" *ngFor="let milestone of milestones">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">{{ milestone.year }}</div>
+            <h3 class="timeline-title">{{ milestone.title }}</h3>
+            <p class="timeline-description">{{ milestone.description }}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section" aria-labelledby="leadership-team-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="leadership-team-title" class="section-title">Leadership Team</h2>
+        <p class="section-subtitle">Meet the experts driving our green net success</p>
+      </div>
+      
+      <div class="team-grid">
+        <article class="team-member" *ngFor="let member of teamMembers">
+          <div class="member-image">
+            <div class="image-placeholder">
+              <span class="placeholder-text">{{ member.name[0] }}</span>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">{{ member.name }}</h3>
+            <p class="member-position">{{ member.position }}</p>
+            <p class="member-experience">{{ member.experience }}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-content">
+        <h2 id="cta-title">Ready to Experience ROSE Brand Quality?</h2>
+        <p>Discover how our innovative green net solutions can transform your agricultural and commercial needs</p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn btn-primary" aria-label="Contact us for green net solutions">Get in Touch</a>
+          <a routerLink="/products" class="btn btn-secondary" aria-label="View our green net products">View Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
