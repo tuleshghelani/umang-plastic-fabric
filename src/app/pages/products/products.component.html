@@ -1,1 +1,295 @@
-<p>products works!</p>
+<!-- Products Page - ROSE Brand Green Nets & Shade Nets -->
+<main class="products-page" itemscope itemtype="http://schema.org/ItemList">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title" itemprop="name">ROSE Brand Green Nets & Shade Nets</h1>
+        <p class="hero-subtitle">Premium Quality Solutions for Every Application</p>
+        <div class="hero-description">
+          <p itemprop="description">Discover our comprehensive range of high-quality green nets and shade nets, 
+          engineered for optimal performance, durability, and sustainability. From residential applications to 
+          large-scale commercial projects, our ROSE brand products deliver excellence in every net.</p>
+        </div>
+        <div class="hero-stats">
+          <!-- <div class="stat-item">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Product Categories</span>
+          </div> -->
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">ROSE Brand Quality</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Years Warranty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-background" aria-hidden="true"></div>
+  </section>
+
+  <!-- Product Categories Section -->
+  <!-- <section class="categories-section" aria-labelledby="product-categories-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="product-categories-title" class="section-title">Product Categories</h2>
+        <p class="section-subtitle">Explore our comprehensive range of green net solutions</p>
+      </div>
+      
+      <div class="categories-grid">
+        <article class="category-card" 
+                 *ngFor="let category of productCategories" 
+                 [class.active]="selectedCategory === category.id"
+                 (click)="selectCategory(category.id)">
+          <div class="category-icon" aria-hidden="true">{{ category.icon }}</div>
+          <h3 class="category-name">{{ category.name }}</h3>
+          <p class="category-description">{{ category.description }}</p>
+          <div class="category-count">{{ category.productCount }} Products</div>
+        </article>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Search and Filters Section -->
+  <!-- <section class="filters-section" aria-labelledby="search-filters-title">
+    <div class="container">
+      <h2 id="search-filters-title" class="visually-hidden">Search and Filters</h2>
+      <div class="filters-content">
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <input type="text" 
+                   [(ngModel)]="searchTerm" 
+                   placeholder="Search products, features, or applications..."
+                   class="search-input"
+>
+            <button class="search-button" type="button">
+              <span class="search-icon">🔍</span>
+            </button>
+          </div>
+          <button *ngIf="searchTerm" 
+                  (click)="clearSearch()" 
+                  class="clear-search"
+                  type="button">
+            ✕
+          </button>
+        </div>
+        
+        <button class="filter-toggle" 
+                (click)="toggleFilters()"
+                [class.active]="showFilters"
+                type="button">
+          <span class="filter-icon">⚙️</span>
+          <span class="filter-text">Filters</span>
+        </button>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Products Grid Section -->
+  <section class="products-grid-section" aria-labelledby="products-grid-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="products-grid-title" class="section-title">
+          {{ selectedCategory === 'all' ? 'All Products' : (selectedCategory | titlecase) + ' Products' }}
+        </h2>
+        <p class="section-subtitle">
+          {{ filteredProducts.length }} product{{ filteredProducts.length !== 1 ? 's' : '' }} found
+        </p>
+      </div>
+      
+      <div class="products-grid" *ngIf="filteredProducts.length > 0; else noProducts">
+        <article class="product-card" 
+                 *ngFor="let product of filteredProducts"
+                 [class.popular]="product.isPopular"
+                 [class.new]="product.isNew"
+                 itemprop="itemListElement"
+                 itemscope
+                 itemtype="http://schema.org/Product">
+          
+          <!-- Product Badges -->
+          <div class="product-badges" *ngIf="product.isPopular || product.isNew">
+            <span class="badge popular" *ngIf="product.isPopular">⭐ Popular</span>
+            <span class="badge new" *ngIf="product.isNew">🆕 New</span>
+          </div>
+          
+          <!-- Product Image -->
+          <div class="product-image">
+            <img [src]="product.image" 
+                 [alt]="product.name + ' - ROSE Brand Green Net'"
+                 itemprop="image"
+                 class="product-img">
+            <div class="rose-brand-overlay" *ngIf="product.isRoseBrand">
+              <span class="rose-icon">🌹</span>
+              <span class="brand-text">ROSE</span>
+            </div>
+          </div>
+          
+          <!-- Product Content -->
+          <div class="product-content">
+            <h3 class="product-name" itemprop="name">{{ product.name }}</h3>
+            <p class="product-description" itemprop="description">{{ product.description }}</p>
+            
+            <!-- Product Features -->
+            <div class="product-features">
+              <h4 class="features-title">Key Features</h4>
+              <ul class="features-list">
+                <li *ngFor="let feature of product.features.slice(0, 3)">
+                  {{ feature }}
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Product Specifications -->
+            <div class="product-specs">
+              <div class="spec-item">
+                <strong>Material:</strong> {{ product.specifications.material }}
+              </div>
+              <div class="spec-item">
+                <strong>Shade Density:</strong> {{ product.specifications.density }}
+              </div>
+              <div class="spec-item">
+                <strong>Lifespan:</strong> {{ product.specifications.lifespan }}
+              </div>
+            </div>
+            
+            <!-- Product Actions -->
+            <div class="product-actions">
+                          <!-- <button class="btn btn-primary" 
+                    (click)="viewProductDetails(product.id)"
+                    type="button">
+              View Details
+            </button> -->
+            <button class="btn btn-secondary" 
+                    (click)="getQuote(product.id)"
+                    type="button">
+              Get Quote
+            </button>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <!-- No Products Found -->
+      <ng-template #noProducts>
+        <div class="no-products">
+          <div class="no-products-icon">🔍</div>
+          <h3>No Products Found</h3>
+          <p>Try adjusting your search terms or category selection.</p>
+          <button class="btn btn-primary" (click)="clearSearch()" type="button">Clear Search</button>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- Product Benefits Section -->
+  <section class="benefits-section" aria-labelledby="product-benefits-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="product-benefits-title" class="section-title">Why Choose ROSE Brand?</h2>
+        <p class="section-subtitle">Unmatched quality and performance in every product</p>
+      </div>
+      
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon">🌹</div>
+          <h3>ROSE Brand Quality</h3>
+          <p>Our flagship brand represents the highest standards in green net manufacturing, ensuring premium quality in every product.</p>
+        </article>
+        
+        <article class="benefit-card">
+          <div class="benefit-icon">☀️</div>
+          <h3>UV Stabilized</h3>
+          <p>All our nets are UV-stabilized for extended outdoor use, maintaining performance and appearance for years.</p>
+        </article>
+        
+        <article class="benefit-card">
+          <div class="benefit-icon">🌱</div>
+          <h3>Eco-Friendly</h3>
+          <p>Made from high-quality, recyclable materials that are safe for the environment and your applications.</p>
+        </article>
+        
+        <article class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Durable & Long-lasting</h3>
+          <p>Engineered for maximum durability with reinforced construction and weather-resistant properties.</p>
+        </article>
+        
+        <article class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3>Custom Solutions</h3>
+          <p>Tailored to your specific requirements with custom sizes, densities, and installation support.</p>
+        </article>
+        
+        <article class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Nationwide Delivery</h3>
+          <p>Fast and reliable delivery across India with professional installation support available.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  <section class="applications-section" aria-labelledby="applications-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="applications-title" class="section-title">Applications & Industries</h2>
+        <p class="section-subtitle">Versatile solutions for diverse needs</p>
+      </div>
+      
+      <div class="applications-grid">
+        <article class="application-card">
+          <div class="application-icon">🏠</div>
+          <h3>Residential</h3>
+          <p>Create comfortable outdoor living spaces with our residential shade nets for homes, balconies, and gardens.</p>
+        </article>
+        
+        <article class="application-card">
+          <div class="application-icon">🌾</div>
+          <h3>Agriculture</h3>
+          <p>Enhance crop yields and protect plants with our professional agricultural shade nets and crop protection solutions.</p>
+        </article>
+        
+        <article class="application-card">
+          <div class="application-icon">🏢</div>
+          <h3>Commercial</h3>
+          <p>Professional-grade shade nets for commercial buildings, warehouses, and large-scale industrial applications.</p>
+        </article>
+        
+        <article class="application-card">
+          <div class="application-icon">🎉</div>
+          <h3>Events & Decorations</h3>
+          <p>Specialized nets for event decoration, temporary flooring, and creative installations.</p>
+        </article>
+        
+        <article class="application-card">
+          <div class="application-icon">🏗️</div>
+          <h3>Construction</h3>
+          <p>Safety and protection nets for construction sites, scaffolding, and temporary structures.</p>
+        </article>
+        
+        <article class="application-card">
+          <div class="application-icon">🚗</div>
+          <h3>Automotive</h3>
+          <p>Car parking solutions and automotive shade nets for dealerships and parking facilities.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-content">
+        <h2 id="cta-title">Ready to Experience ROSE Brand Quality?</h2>
+        <p>Get in touch with our experts to discuss your requirements and receive personalized solutions</p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+          <a routerLink="/about-us" class="btn btn-secondary">About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
