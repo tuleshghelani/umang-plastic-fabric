@@ -1,6 +1,30 @@
 // Products Page Styles
 // Using theme colors from styles.scss
 
+// Rose Logo Styles
+.rose-logo-inline {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.rose-logo-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.rose-logo-overlay {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .products-page {
   // Accessibility
   .visually-hidden {

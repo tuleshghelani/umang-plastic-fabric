@@ -1,0 +1,260 @@
+<!-- Contact Us Page - Umang Plastic Fabric -->
+<main class="contact-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Get in Touch with Us</h1>
+        <p class="hero-subtitle">Ready to discuss your plastic fabric requirements? Our expert team is here to help you find the perfect solution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section class="contact-info-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+          <h2 class="section-title">Send Us a Message</h2>
+          <p class="section-description">Fill out the form below and we'll get back to you within 24 hours.</p>
+          
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">
+                  <strong>Full Name</strong> <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  formControlName="name" 
+                  class="form-input" 
+                  [class.error]="getFieldError('name')"
+                  placeholder="Enter your full name"
+                  aria-describedby="name-error"
+                >
+                <div *ngIf="getFieldError('name')" id="name-error" class="error-message" role="alert">
+                  {{ getFieldError('name') }}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">
+                  <strong>Email Address</strong> <span class="required">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  formControlName="email" 
+                  class="form-input" 
+                  [class.error]="getFieldError('email')"
+                  placeholder="Enter your email address"
+                  aria-describedby="email-error"
+                >
+                <div *ngIf="getFieldError('email')" id="email-error" class="error-message" role="alert">
+                  {{ getFieldError('email') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone" class="form-label">
+                  <strong>Phone Number</strong> <span class="required">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  formControlName="phone" 
+                  class="form-input" 
+                  [class.error]="getFieldError('phone')"
+                  placeholder="Enter your phone number"
+                  aria-describedby="phone-error"
+                >
+                <div *ngIf="getFieldError('phone')" id="phone-error" class="error-message" role="alert">
+                  {{ getFieldError('phone') }}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="company" class="form-label">
+                  <strong>Company Name</strong>
+                </label>
+                <input 
+                  type="text" 
+                  id="company" 
+                  formControlName="company" 
+                  class="form-input"
+                  placeholder="Enter your company name (optional)"
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">
+                <strong>Subject</strong> <span class="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="subject" 
+                formControlName="subject" 
+                class="form-input" 
+                [class.error]="getFieldError('subject')"
+                placeholder="What is this regarding?"
+                aria-describedby="subject-error"
+              >
+              <div *ngIf="getFieldError('subject')" id="subject-error" class="error-message" role="alert">
+                {{ getFieldError('subject') }}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <strong>Message</strong> <span class="required">*</span>
+              </label>
+              <textarea 
+                id="message" 
+                formControlName="message" 
+                class="form-textarea" 
+                [class.error]="getFieldError('message')"
+                rows="6"
+                placeholder="Tell us about your requirements, questions, or how we can help you..."
+                aria-describedby="message-error"
+              ></textarea>
+              <div *ngIf="getFieldError('message')" id="message-error" class="error-message" role="alert">
+                {{ getFieldError('message') }}
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label class="form-label">
+                <strong>Preferred Contact Method</strong>
+              </label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" formControlName="preferredContact" value="email" class="radio-input">
+                  <span class="radio-text">Email</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" formControlName="preferredContact" value="phone" class="radio-input">
+                  <span class="radio-text">Phone Call</span>
+                </label>
+              </div>
+            </div> -->
+
+            <button 
+              type="submit" 
+              class="submit-btn" 
+              [disabled]="isSubmitting || !contactForm.valid"
+              [class.loading]="isSubmitting"
+            >
+              <span *ngIf="!isSubmitting">Send Message</span>
+              <span *ngIf="isSubmitting">Sending...</span>
+            </button>
+          </form>
+
+          <!-- Success/Error Messages -->
+          <div *ngIf="submitSuccess" class="success-message" role="alert">
+            <h4>Thank You!</h4>
+            <p>Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+          </div>
+
+          <div *ngIf="submitError" class="error-message" role="alert">
+            <h4>Oops! Something went wrong.</h4>
+            <p>{{ submitError }}</p>
+          </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <h3 class="contact-details-title">Contact Information</h3>
+          
+          <ul class="contact-list">
+            <li class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Umang Plastic Fabric</strong>
+                <strong>Plot No-98, Arjun Industrial Zone, Gundasara Road, Padavala, Rajkot, Gujarat- 360030.</strong>
+              </div>
+            </li>
+            
+            <li class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <strong>
+                  <a href="tel:+919328034724">+91 9328034724</a>
+                </strong>
+              </div>
+            </li>
+            
+            <li class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <strong>
+                  <a href="tel:+916352434724">+91 6352434724</a>
+                </strong>
+              </div>
+            </li>
+            
+            <li class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>
+                  <a href="mailto:Umangplasticfebricllp@gmail.com">Umangplasticfebricllp&#64;gmail.com</a>
+                </strong>
+              </div>
+            </li>
+            
+            <li class="contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Thursday - Tuesday : 9:00 AM - 7:00 PM</strong>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3 class="faq-question">What types of plastic fabrics do you offer?</h3>
+          <p class="faq-answer">We offer a comprehensive range of plastic fabrics including PVC, PU, PE, and specialized industrial fabrics for various applications.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3 class="faq-question">Do you provide custom solutions?</h3>
+          <p class="faq-answer">Yes, we specialize in custom plastic fabric solutions tailored to your specific requirements and industry needs.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3 class="faq-question">What is your typical response time?</h3>
+          <p class="faq-answer">We typically respond to all inquiries within 24 hours during business days.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3 class="faq-question">Do you ship internationally?</h3>
+          <p class="faq-answer">Yes, we provide worldwide shipping and have experience serving clients across multiple continents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Get Started?</h2>
+        <p class="cta-description">Let's discuss how our premium plastic fabric solutions can meet your requirements.</p>
+        <a href="tel:+919328034724" class="cta-btn primary">Call Us Now</a>
+        <a href="mailto:Umangplasticfebricllp@gmail.com" class="cta-btn secondary">Send Email</a>
+      </div>
+    </div>
+  </section>
+</main>
