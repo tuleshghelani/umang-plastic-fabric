@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about-us',
@@ -10,12 +11,27 @@ import { RouterModule } from '@angular/router';
   styleUrl: './about-us.component.scss'
 })
 export class AboutUsComponent implements OnInit {
-  
   companyStats = [
-    { number: '5+', label: 'Years Experience', icon: '🏭' },
-    { number: '200+', label: 'Happy Clients', icon: '😊' },
-    { number: '500+', label: 'Projects Completed', icon: '✅' },
-    { number: '25+', label: 'Team Members', icon: '👥' }
+    {
+      number: '5+',
+      label: 'Years of Excellence',
+      icon: '🏆'
+    },
+    {
+      number: '1000+',
+      label: 'Happy Customers',
+      icon: '😊'
+    },
+    {
+      number: '50+',
+      label: 'Product Varieties',
+      icon: '📦'
+    },
+    {
+      number: '24/7',
+      label: 'Customer Support',
+      icon: '🛠️'
+    }
   ];
 
   coreValues = [
@@ -54,7 +70,7 @@ export class AboutUsComponent implements OnInit {
   milestones = [
     {
       year: '2021',
-      title: 'Company Founded',
+      title: 'Company Foundation',
       description: 'Started as a small green net manufacturing unit in Gujarat'
     },
     {
@@ -131,7 +147,7 @@ export class AboutUsComponent implements OnInit {
     {
       title: 'ROSE Brand Excellence',
       description: 'Our flagship ROSE brand represents the highest quality standards in green net manufacturing',
-      icon: '🌹'
+      icon: 'assets/logo/roze.jpg'
     },
     {
       title: 'Premium Quality',

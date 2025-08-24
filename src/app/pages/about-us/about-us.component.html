@@ -11,7 +11,7 @@
           serving industries worldwide with premium quality ROSE brand shade nets and sustainable manufacturing practices.</p>
         </div>
         <div class="brand-highlight">
-          <span class="brand-icon" aria-label="ROSE Brand Icon">🌹</span>
+          <img src="assets/logo/roze.jpg" alt="ROSE Brand Icon" class="brand-icon" aria-label="ROSE Brand Icon">
           <span class="brand-text">ROSE Brand - Excellence in Every Net</span>
         </div>
       </div>
@@ -83,7 +83,10 @@
         
         <div class="brand-features-grid">
           <div class="brand-feature" *ngFor="let feature of brandFeatures">
-            <div class="feature-icon" aria-hidden="true">{{ feature.icon }}</div>
+            <div class="feature-icon" aria-hidden="true">
+              <img *ngIf="feature.icon === 'assets/logo/roze.jpg'" [src]="feature.icon" alt="ROSE Brand Icon" class="rose-icon">
+              <span *ngIf="feature.icon !== 'assets/logo/roze.jpg'">{{ feature.icon }}</span>
+            </div>
             <h4 class="feature-title">{{ feature.title }}</h4>
             <p class="feature-description">{{ feature.description }}</p>
           </div>
@@ -106,7 +109,7 @@
           <h3 class="product-name">{{ product.name }}</h3>
           <p class="product-description">{{ product.description }}</p>
           <div class="rose-brand-badge">
-            <span class="rose-icon-small" aria-hidden="true">🌹</span>
+            <img src="assets/logo/roze.jpg" alt="ROSE Brand Icon" class="rose-icon-small" aria-hidden="true">
             <span>ROSE Brand</span>
           </div>
         </article>
