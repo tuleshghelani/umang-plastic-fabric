@@ -49,14 +49,12 @@
       <div class="footer-section products">
         <h3 class="footer-title">Our Products</h3>
         <ul class="footer-list">
-          <li><a routerLink="/products/green-shade-net">Green Shade Net</a></li>
-          <li><a routerLink="/products/hdpe-shade-net">HDPE Shade Net</a></li>
-          <li><a routerLink="/products/agro-shade-net">Agro Shade Net</a></li>
-          <li><a routerLink="/products/greenhouse-net">Greenhouse Net</a></li>
-          <li><a routerLink="/products/garden-net">Garden Protection Net</a></li>
-          <li><a routerLink="/products/insect-net">Insect Protection Net</a></li>
-          <li><a routerLink="/products/bird-protection-net">Bird Protection Net</a></li>
-          <li><a routerLink="/products/crop-protection-net">Crop Protection Net</a></li>
+          <li><a routerLink="/products" [fragment]="'residential-shade-net'">Residential Shade Net</a></li>
+          <li><a routerLink="/products" [fragment]="'agricultural-shade-net'">Agricultural Shade Net</a></li>
+          <li><a routerLink="/products" [fragment]="'commercial-shade-net'">Commercial Shade Net</a></li>
+          <li><a routerLink="/products" [fragment]="'sun-shade-net'">Sun Shade Net</a></li>
+          <li><a routerLink="/products" [fragment]="'event-decoration-flooring-net'">Event Decoration Flooring Net</a></li>
+          <li><a routerLink="/products" [fragment]="'monofilament-shade-net'">Monofilament Shade Net</a></li>
         </ul>
       </div>
 
