@@ -1,0 +1,187 @@
+// Contact Us Page Styles
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles.scss';
+
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: $text-white;
+  padding: 5.9rem 0 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+  }
+  
+  // @include mobile {
+  //   padding: 5.5rem 0 2.5rem;
+  // }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  @include heading-1;
+  color: $text-white;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  @include mobile {
+    font-size: 1.75rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: $font-size-lg;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: $line-height-relaxed;
+  
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
+.process-page { 
+  display: block;
+  padding: 0 0 2rem 0;
+}
+
+.hero {
+  max-width: 1120px;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  line-height: 1.25;
+}
+
+.hero .subhead { 
+  margin: 0 auto;
+  max-width: 840px;
+  opacity: .85;
+}
+
+.intro {
+  max-width: 960px;
+  margin: 1.25rem auto 1.5rem auto;
+}
+
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 1.25rem auto;
+  max-width: 960px;
+}
+
+.step { 
+  background: rgba(0,0,0,0.03);
+  border-radius: 12px;
+  padding: .875rem .875rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+  & + .step { margin-top: .75rem; }
+}
+
+.text { padding: 0; }
+
+.text h3 { 
+  margin: 0 0 .35rem 0;
+}
+
+.text p { 
+  margin: 0;
+}
+
+
+.gallery { 
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.gallery h2 { 
+  text-align: center;
+  margin: .5rem 0 .75rem 0;
+}
+
+.gallery .grid { 
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .5rem;
+}
+
+.gallery figure { 
+  grid-column: span 12;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.04);
+}
+
+.gallery img { 
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .gallery figure { grid-column: span 6; }
+}
+
+@media (min-width: 1024px) {
+  .gallery figure { grid-column: span 4; }
+}
+
+// Utility container to align with theme spacing
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Mobile typography tweaks
+@include mobile {
+  .intro h2 { font-size: 1.25rem; }
+  .text h3 { font-size: 1.125rem; }
+  .text p { line-height: 1.5; }
+}
+
+.cta { 
+  max-width: 960px;
+  margin: 2rem auto 0 auto;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: .75rem;
+  padding: .75rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  background: #0e7490;
+}
+
+.btn:focus {
+  outline: 2px solid #0ea5b3;
+  outline-offset: 2px;
+}
+
