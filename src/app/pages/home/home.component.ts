@@ -250,4 +250,29 @@ export class HomeComponent implements OnInit {
   toggleDesignContent() {
     this.showDesignContent = !this.showDesignContent;
   }
+
+  /**
+   * Opens WhatsApp chat with the specified phone number
+   * Uses web.whatsapp.com for desktop and whatsapp://send for mobile
+   */
+  openWhatsApp() {
+    const phoneNumber = '919328034724';
+    const message = encodeURIComponent('Hello! I am interested in your premium green nets and shade nets. Could you please provide more information?');
+    
+    // Check if it's a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    let whatsappUrl: string;
+    
+    if (isMobile) {
+      // For mobile devices, use the WhatsApp app directly
+      whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+    } else {
+      // For desktop, use web.whatsapp.com
+      whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+    }
+    
+    // Open WhatsApp in a new window/tab
+    window.open(whatsappUrl, '_blank');
+  }
 }
