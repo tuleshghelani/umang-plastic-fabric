@@ -1,0 +1,286 @@
+// Contact Popup Styles
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles.scss';
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 1rem;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.popup-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+
+  .popup-overlay.show & {
+    transform: scale(1);
+  }
+}
+
+.popup-header {
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: $text-light;
+  padding: 1.5rem 2rem;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+  text-align: center;
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: $text-white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.popup-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: $text-white;
+}
+
+.popup-subtitle {
+  font-size: 0.95rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.popup-content {
+  padding: 2rem;
+}
+
+.contact-form {
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: $text-primary;
+    font-weight: 600;
+
+    .required {
+      color: #e74c3c;
+    }
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 90%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    }
+
+    &.error {
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);      
+      width: 90%;
+    }
+
+    &::placeholder {
+      color: #a0a0a0;
+    }
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    color: $text-light;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($primary, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    &.loading {
+      position: relative;
+      color: transparent;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid transparent;
+        border-top: 2px solid $text-light;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+}
+
+.success-message,
+.error-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+
+  h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+// Mobile optimizations
+@include mobile {
+  .popup-overlay {
+    padding: 0.5rem;
+  }
+
+  .popup-container {
+    // max-height: 95vh;
+  }
+
+  .popup-header {
+    padding: 1.25rem 1.5rem;
+
+    .popup-title {
+      font-size: 1.25rem;
+    }
+
+    .popup-subtitle {
+      font-size: 0.85rem;
+    }
+  }
+
+  .popup-content {
+    padding: 1.5rem;
+  }
+
+  .contact-form {
+    .form-input,
+    .form-textarea {
+      padding: 0.65rem 0.875rem;
+      font-size: 0.85rem;
+      width: 90%;
+    }
+
+    .submit-btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Tablet optimizations
+@include tablet {
+  .popup-container {
+    max-width: 550px;
+  }
+}

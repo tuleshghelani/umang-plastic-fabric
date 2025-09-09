@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import Aos from 'aos';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ContactPopupComponent } from '../../components/contact-popup/contact-popup.component';
 
 interface Product {
   title: string;
@@ -29,7 +30,7 @@ interface Feature {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ContactPopupComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

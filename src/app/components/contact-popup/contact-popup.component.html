@@ -1,0 +1,144 @@
+<!-- Contact Popup Modal -->
+<div class="popup-overlay" [class.show]="showPopup" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+      <h2 class="popup-title">Get Your Free Quote</h2>
+      <p class="popup-subtitle">Tell us about your requirements and we'll get back to you within 24 hours</p>
+      <button class="close-btn" (click)="closePopup()" aria-label="Close popup">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="popup-content">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="popup-name" class="form-label">
+              <strong>Full Name</strong> <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="popup-name" 
+              formControlName="name" 
+              class="form-input" 
+              [class.error]="getFieldError('name')"
+              placeholder="Enter your full name"
+              aria-describedby="popup-name-error"
+            >
+            <div *ngIf="getFieldError('name')" id="popup-name-error" class="error-message" role="alert">
+              {{ getFieldError('name') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="popup-email" class="form-label">
+              <strong>Email Address</strong> <span class="required">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="popup-email" 
+              formControlName="email" 
+              class="form-input" 
+              [class.error]="getFieldError('email')"
+              placeholder="Enter your email address"
+              aria-describedby="popup-email-error"
+            >
+            <div *ngIf="getFieldError('email')" id="popup-email-error" class="error-message" role="alert">
+              {{ getFieldError('email') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="popup-phone" class="form-label">
+              <strong>Phone Number</strong> <span class="required">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="popup-phone" 
+              formControlName="phone" 
+              class="form-input" 
+              [class.error]="getFieldError('phone')"
+              placeholder="Enter your phone number"
+              aria-describedby="popup-phone-error"
+            >
+            <div *ngIf="getFieldError('phone')" id="popup-phone-error" class="error-message" role="alert">
+              {{ getFieldError('phone') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="popup-company" class="form-label">
+              <strong>Company Name</strong>
+            </label>
+            <input 
+              type="text" 
+              id="popup-company" 
+              formControlName="company" 
+              class="form-input"
+              placeholder="Enter your company name (optional)"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="popup-subject" class="form-label">
+            <strong>Subject</strong> <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="popup-subject" 
+            formControlName="subject" 
+            class="form-input" 
+            [class.error]="getFieldError('subject')"
+            placeholder="What is this regarding?"
+            aria-describedby="popup-subject-error"
+          >
+          <div *ngIf="getFieldError('subject')" id="popup-subject-error" class="error-message" role="alert">
+            {{ getFieldError('subject') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="popup-message" class="form-label">
+            <strong>Message</strong> <span class="required">*</span>
+          </label>
+          <textarea 
+            id="popup-message" 
+            formControlName="message" 
+            class="form-textarea" 
+            [class.error]="getFieldError('message')"
+            rows="4"
+            placeholder="Tell us about your requirements, questions, or how we can help you..."
+            aria-describedby="popup-message-error"
+          ></textarea>
+          <div *ngIf="getFieldError('message')" id="popup-message-error" class="error-message" role="alert">
+            {{ getFieldError('message') }}
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="submit-btn" 
+          [disabled]="isSubmitting || !contactForm.valid"
+          [class.loading]="isSubmitting"
+        >
+          <span *ngIf="!isSubmitting">Send Message</span>
+          <span *ngIf="isSubmitting">Sending...</span>
+        </button>
+      </form>
+
+      <!-- Success/Error Messages -->
+      <div *ngIf="submitSuccess" class="success-message" role="alert">
+        <h4>Thank You!</h4>
+        <p>Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+      </div>
+
+      <div *ngIf="submitError" class="error-message" role="alert">
+        <h4>Oops! Something went wrong.</h4>
+        <p>{{ submitError }}</p>
+      </div>
+    </div>
+  </div>
+</div>
