@@ -1,0 +1,145 @@
+<!-- Companies Page - Umang Plastic Fabric -->
+<main class="companies-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Our Companies</h1>
+        <p class="hero-subtitle">Building Excellence Across Industries</p>
+        <div class="hero-description">
+          <p>Umang Plastic Fabric is proud to be part of a diverse group of companies, each specializing in different industries while maintaining our shared commitment to quality, innovation, and customer satisfaction.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-background" aria-hidden="true"></div>
+  </section>
+
+  <!-- Companies Grid Section -->
+  <section class="companies-section" aria-labelledby="companies-title">
+    <div class="container">
+      <h2 id="companies-title" class="visually-hidden">Our Group Companies</h2>
+      <div class="companies-grid">
+        <article class="company-card" *ngFor="let company of companies" [attr.id]="company.id">
+          <div class="company-header">
+            <div class="company-logo-wrapper">
+              <img [src]="company.logo" 
+                   [alt]="company.name + ' Logo'" 
+                   class="company-logo"
+                   loading="lazy"
+                   (error)="onImageError($event)">
+            </div>
+            <div class="company-info">
+              <h3 class="company-name">{{ company.name }}</h3>
+              <p class="company-description">{{ company.description }}</p>
+              <div class="company-badges">
+                <span class="badge badge-category">{{ company.category }}</span>
+                <span class="badge badge-industry">{{ company.industry }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="company-body">
+            <p class="company-details">{{ company.details }}</p>
+            
+            <div class="company-features">
+              <h4 class="features-title">Key Features</h4>
+              <ul class="features-list">
+                <li *ngFor="let feature of company.features" class="feature-item">
+                  <i class="fas fa-check-circle" aria-hidden="true"></i>
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="company-footer">
+            <a [href]="company.website" 
+               (click)="openWebsite(company.website, $event)"
+               (touchstart)="$event.stopPropagation()"
+               (touchend)="openWebsite(company.website, $event)"
+               class="btn btn-primary"
+               target="_blank"
+               rel="noopener noreferrer"
+               [attr.aria-label]="'Visit ' + company.name + ' website'"
+               role="button"
+               tabindex="0">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              <span>Visit Website</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Overview Section -->
+  <section class="overview-section" aria-labelledby="group-overview-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="group-overview-title" class="section-title">Group Overview</h2>
+        <p class="section-subtitle">Diverse expertise, unified commitment to excellence</p>
+      </div>
+      
+      <div class="overview-content">
+        <div class="overview-text">
+          <h3>Strength Through Diversity</h3>
+          <p>Our group of companies represents a diverse portfolio of manufacturing expertise, from precision jewellery machinery to innovative kitchenware solutions. Each company operates independently while sharing core values of quality, innovation, and customer-centricity.</p>
+          
+          <p>This diversity allows us to serve multiple industries and markets, bringing specialized knowledge and experience to each sector. Whether it's the precision engineering required for jewellery machinery or the design innovation needed for modern kitchenware, our companies excel in their respective fields.</p>
+          
+          <p>Together, we form a strong network of manufacturing excellence, committed to delivering superior products and services that meet the evolving needs of our customers worldwide.</p>
+        </div>
+        
+        <div class="overview-stats">
+          <div class="stat-item">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Group Companies</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Years Combined Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Satisfied Customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-content">
+        <h2 id="cta-title">Interested in Our Products?</h2>
+        <p>Explore our companies' offerings or get in touch with us to learn more about our group's capabilities</p>
+        <div class="cta-buttons">
+          <a routerLink="/products" 
+             class="btn btn-primary" 
+             aria-label="View our products"
+             (touchstart)="$event.stopPropagation()"
+             role="button"
+             tabindex="0">
+            <i class="fas fa-boxes" aria-hidden="true"></i>
+            <span>View Products</span>
+          </a>
+          <a routerLink="/contact-us" 
+             class="btn btn-secondary" 
+             aria-label="Contact us"
+             (touchstart)="$event.stopPropagation()"
+             role="button"
+             tabindex="0">
+            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+            <span>Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
