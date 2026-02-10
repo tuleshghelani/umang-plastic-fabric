@@ -164,7 +164,9 @@
 
 .form-input,
 .form-textarea {
-  width: 90%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 0.875rem 1rem;
   border: 2px solid $border-light;
   border-radius: 8px;
@@ -173,18 +175,23 @@
   color: $text-primary;
   background: $background-primary;
   transition: all 0.3s ease;
-  
+
   &:focus {
     outline: none;
     border-color: $primary;
     box-shadow: 0 0 0 3px rgba($primary, 0.1);
   }
-  
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
   &.error {
     border-color: $error;
     box-shadow: 0 0 0 3px rgba($error, 0.1);
   }
-  
+
   &::placeholder {
     color: $text-light;
   }
@@ -231,9 +238,10 @@
   font-size: $font-size-base;
 }
 
-// Submit Button
+// Submit Button - minimum 44px touch target
 .submit-btn {
   width: 100%;
+  min-height: 44px;
   padding: 1rem 2rem;
   background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
   color: $text-white;
@@ -245,22 +253,27 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba($primary, 0.3);
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0);
   }
-  
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
   }
-  
+
   &.loading {
     background: linear-gradient(135deg, $neutral-medium 0%, $neutral-dark 100%);
   }
@@ -530,8 +543,10 @@
   }
 }
 
+// CTA buttons - minimum 44px touch target
 .cta-btn {
   display: inline-block;
+  min-height: 44px;
   padding: 1rem 2rem;
   margin: 0 0.5rem;
   border-radius: 8px;
@@ -540,13 +555,19 @@
   text-decoration: none;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  
+  box-sizing: border-box;
+
   @include mobile {
     display: block;
     margin: 0.5rem auto;
     max-width: 200px;
   }
-  
+
+  &:focus-visible {
+    outline: 2px solid $text-white;
+    outline-offset: 2px;
+  }
+
   &.primary {
     background: $text-white;
     color: $secondary-dark;

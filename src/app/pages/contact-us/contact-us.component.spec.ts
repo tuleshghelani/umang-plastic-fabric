@@ -1,26 +1,23 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Meta, Title } from '@angular/platform-browser';
 import { PLATFORM_ID } from '@angular/core';
 import { ContactUsComponent } from './contact-us.component';
+import { SeoService } from '../../services/seo.service';
 
 describe('ContactUsComponent', () => {
   let component: ContactUsComponent;
   let fixture: ComponentFixture<ContactUsComponent>;
-  let mockMeta: jasmine.SpyObj<Meta>;
-  let mockTitle: jasmine.SpyObj<Title>;
+  let mockSeoService: jasmine.SpyObj<SeoService>;
   let mockPlatformId: Object;
 
   beforeEach(async () => {
-    mockMeta = jasmine.createSpyObj('Meta', ['updateTag']);
-    mockTitle = jasmine.createSpyObj('Title', ['setTitle']);
+    mockSeoService = jasmine.createSpyObj('SeoService', ['updateTitle', 'updateMetaTags']);
     mockPlatformId = 'browser';
 
     await TestBed.configureTestingModule({
       imports: [ContactUsComponent, ReactiveFormsModule, FormsModule],
       providers: [
-        { provide: Meta, useValue: mockMeta },
-        { provide: Title, useValue: mockTitle },
+        { provide: SeoService, useValue: mockSeoService },
         { provide: PLATFORM_ID, useValue: mockPlatformId }
       ]
     }).compileComponents();
@@ -44,8 +41,8 @@ describe('ContactUsComponent', () => {
   });
 
   it('should set SEO metadata on init', () => {
-    expect(mockTitle.setTitle).toHaveBeenCalledWith('Contact Us - Umang Plastic Fabric | Get in Touch for Premium Solutions');
-    expect(mockMeta.updateTag).toHaveBeenCalled();
+    expect(mockSeoService.updateTitle).toHaveBeenCalledWith('Contact Us - Umang Plastic Fabric | Get in Touch for Premium Solutions');
+    expect(mockSeoService.updateMetaTags).toHaveBeenCalled();
   });
 
   it('should validate required fields', () => {
@@ -115,8 +112,8 @@ describe('ContactUsComponent', () => {
       message: 'This is a test message'
     });
     
-    component.onSubmit();
-    
+    component.onSubmit({ preventDefault: () => {} } as Event);
+
     // Fast-forward time by 2 seconds
     tick(2000);
     
@@ -130,17 +127,32 @@ describe('ContactUsComponent', () => {
   }));
 
   it('should not submit invalid form', () => {
-    component.onSubmit();
+    component.onSubmit({ preventDefault: () => {} } as Event);
     expect(component.isSubmitting).toBeFalsy();
     expect(component.submitSuccess).toBeFalsy();
   });
 
   it('should mark all form controls as touched on invalid submission', () => {
-    const form = component.contactForm;
-    spyOn(form, 'markAsTouched');
-    
-    component.onSubmit();
-    
-    expect(form.markAsTouched).toHaveBeenCalled();
+    const nameControl = component.contactForm.get('name');
+    spyOn(nameControl!, 'markAsTouched');
+
+    component.onSubmit({ preventDefault: () => {} } as Event);
+
+    expect(nameControl?.markAsTouched).toHaveBeenCalled();
+  });
+
+  it('should not double submit when already submitting', () => {
+    component.contactForm.patchValue({
+      name: 'John Doe',
+      email: 'john@example.com',
+      phone: '1234567890',
+      subject: 'Test Subject',
+      message: 'This is a test message'
+    });
+    component.isSubmitting = true;
+
+    component.onSubmit({ preventDefault: () => {} } as Event);
+
+    expect(component.isSubmitting).toBeTruthy();
   });
 });

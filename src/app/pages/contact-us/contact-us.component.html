@@ -1,25 +1,25 @@
 <!-- Contact Us Page - Umang Plastic Fabric -->
-<main class="contact-page">
+<main class="contact-page" itemscope itemtype="https://schema.org/ContactPage">
   <!-- Hero Section -->
-  <section class="hero-section">
+  <section class="hero-section" aria-labelledby="hero-title">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">Get in Touch with Us</h1>
+        <h1 id="hero-title" class="hero-title">Get in Touch with Us</h1>
         <p class="hero-subtitle">Ready to discuss your plastic fabric requirements? Our expert team is here to help you find the perfect solution.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact Information Section -->
-  <section class="contact-info-section">
+  <section class="contact-info-section" aria-labelledby="contact-form-title contact-details-title">
     <div class="container">
       <div class="contact-grid">
         <!-- Contact Form -->
         <div class="contact-form-container">
-          <h2 class="section-title">Send Us a Message</h2>
-          <p class="section-description">Fill out the form below and we'll get back to you within 24 hours.</p>
+          <h2 id="contact-form-title" class="section-title">Send Us a Message</h2>
+          <p class="section-description">Fill out the form below and we will get back to you within 24 hours.</p>
           
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" class="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">
@@ -148,6 +148,7 @@
               class="submit-btn" 
               [disabled]="isSubmitting || !contactForm.valid"
               [class.loading]="isSubmitting"
+              (touchstart)="$event.stopPropagation()"
             >
               <span *ngIf="!isSubmitting">Send Message</span>
               <span *ngIf="isSubmitting">Sending...</span>
@@ -167,47 +168,44 @@
         </div>
 
         <!-- Contact Details -->
-        <div class="contact-details">
-          <h3 class="contact-details-title">Contact Information</h3>
+        <div class="contact-details" itemscope itemtype="https://schema.org/Organization" itemprop="mainEntity">
+          <h2 id="contact-details-title" class="contact-details-title">Contact Information</h2>
           
           <ul class="contact-list">
             <li class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               <div>
-                <strong>Umang Plastic Fabric</strong>
-                <strong>Plot No-98, Arjun Industrial Zone, Gundasara Road, Padavala, Rajkot, Gujarat- 360030.</strong>
+                <strong itemprop="name">Umang Plastic Fabric</strong>
+                <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="streetAddress">Plot No-98, Arjun Industrial Zone, Gundasara Road, Padavala, Rajkot, Gujarat- 360030.</span></span>
               </div>
             </li>
             
             <li class="contact-item">
-              <i class="fas fa-phone-alt"></i>
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
               <div>
-                <strong>
-                  <a href="tel:+919328034724">+91 9328034724</a>
-                </strong>
+                <strong>Export office</strong>
+                <a href="tel:+918758023399" itemprop="telephone">+91 8758023399</a>
               </div>
             </li>
             
             <li class="contact-item">
-              <i class="fas fa-phone-alt"></i>
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
               <div>
-                <strong>
-                  <a href="tel:+916352434724">+91 6352434724</a>
-                </strong>
+                <strong>Company office</strong>
+                <a href="tel:+916352434724" itemprop="telephone">+91 6352434724</a>
               </div>
             </li>
             
             <li class="contact-item">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <div>
-                <strong>
-                  <a href="mailto:Umangplasticfebricllp@gmail.com">Umangplasticfebricllp&#64;gmail.com</a>
-                </strong>
+                <strong>Email</strong>
+                <a href="mailto:Umangplasticfebricllp@gmail.com" itemprop="email">Umangplasticfebricllp&#64;gmail.com</a>
               </div>
             </li>
             
-            <li class="contact-item">
-              <i class="fas fa-clock"></i>
+            <li class="contact-item" itemprop="openingHours">
+              <i class="fas fa-clock" aria-hidden="true"></i>
               <div>
                 <strong>Thursday - Tuesday : 9:00 AM - 7:00 PM</strong>
               </div>
@@ -219,9 +217,9 @@
   </section>
 
   <!-- FAQ Section -->
-  <section class="faq-section">
+  <section class="faq-section" aria-labelledby="faq-title">
     <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
+      <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
       <div class="faq-grid">
         <div class="faq-item">
           <h3 class="faq-question">What types of plastic fabrics do you offer?</h3>
@@ -247,13 +245,13 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="cta-section">
+  <section class="cta-section" aria-labelledby="cta-title">
     <div class="container">
       <div class="cta-content">
-        <h2 class="cta-title">Ready to Get Started?</h2>
-        <p class="cta-description">Let's discuss how our premium plastic fabric solutions can meet your requirements.</p>
-        <a href="tel:+919328034724" class="cta-btn primary">Call Us Now</a>
-        <a href="mailto:Umangplasticfebricllp@gmail.com" class="cta-btn secondary">Send Email</a>
+        <h2 id="cta-title" class="cta-title">Ready to Get Started?</h2>
+        <p class="cta-description">Let us discuss how our premium plastic fabric solutions can meet your requirements.</p>
+        <a href="tel:+916352434724" class="cta-btn primary" (touchstart)="$event.stopPropagation()" aria-label="Call company office">Call Us Now</a>
+        <a href="mailto:Umangplasticfebricllp@gmail.com" class="cta-btn secondary" (touchstart)="$event.stopPropagation()" aria-label="Send email">Send Email</a>
       </div>
     </div>
   </section>

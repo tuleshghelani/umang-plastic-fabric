@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -18,8 +18,7 @@ export class ContactUsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private meta: Meta,
-    private title: Title,
+    private seoService: SeoService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.contactForm = this.fb.group({
@@ -51,43 +50,41 @@ export class ContactUsComponent implements OnInit {
   }
 
   private setSEOMetadata(): void {
-    this.title.setTitle('Contact Us - Umang Plastic Fabric | Get in Touch for Premium Solutions');
-    
-    this.meta.updateTag({ name: 'description', content: 'Contact Umang Plastic Fabric for premium plastic fabric solutions. Get expert consultation, quotes, and support. Reach our team via phone, email, or contact form.' });
-    this.meta.updateTag({ name: 'keywords', content: 'contact us, plastic fabric, Umang Plastic Fabric, customer support, quote request, consultation, industrial fabrics' });
-    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
-    this.meta.updateTag({ name: 'author', content: 'Umang Plastic Fabric' });
-    
-    // Open Graph tags
-    this.meta.updateTag({ property: 'og:title', content: 'Contact Us - Umang Plastic Fabric' });
-    this.meta.updateTag({ property: 'og:description', content: 'Get in touch with Umang Plastic Fabric for premium plastic fabric solutions and expert consultation.' });
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
-    
-    // Twitter Card tags
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ name: 'twitter:title', content: 'Contact Us - Umang Plastic Fabric' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Get in touch with Umang Plastic Fabric for premium plastic fabric solutions and expert consultation.' });
+    this.seoService.updateTitle('Contact Us - Umang Plastic Fabric | Get in Touch for Premium Solutions');
+
+    const ogUrl = isPlatformBrowser(this.platformId) ? window.location.href : '';
+    this.seoService.updateMetaTags({
+      description: 'Contact Umang Plastic Fabric for premium plastic fabric solutions. Get expert consultation, quotes, and support. Reach our team via phone, email, or contact form.',
+      keywords: 'contact us, plastic fabric, Umang Plastic Fabric, customer support, quote request, consultation, industrial fabrics',
+      ogTitle: 'Contact Us - Umang Plastic Fabric',
+      ogDescription: 'Get in touch with Umang Plastic Fabric for premium plastic fabric solutions and expert consultation.',
+      ogUrl,
+      twitterTitle: 'Contact Us - Umang Plastic Fabric',
+      twitterDescription: 'Get in touch with Umang Plastic Fabric for premium plastic fabric solutions and expert consultation.'
+    });
   }
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.isSubmitting = true;
-      this.submitError = '';
-      
-      // Simulate form submission
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.submitSuccess = true;
-        this.contactForm.reset();
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          this.submitSuccess = false;
-        }, 5000);
-      }, 2000);
-    } else {
+  onSubmit(event: Event): void {
+    event.preventDefault();
+    if (this.isSubmitting) return;
+    if (!this.contactForm.valid) {
       this.markFormGroupTouched();
+      return;
     }
+    this.isSubmitting = true;
+    this.submitError = '';
+
+    // Simulate form submission
+    setTimeout(() => {
+      this.isSubmitting = false;
+      this.submitSuccess = true;
+      this.contactForm.reset();
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        this.submitSuccess = false;
+      }, 5000);
+    }, 2000);
   }
 
   private markFormGroupTouched(): void {
